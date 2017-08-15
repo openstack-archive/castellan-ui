@@ -1,0 +1,16 @@
+<div ng-controller="horizon.dashboard.key_manager.managed_objects.OverviewController as ctrl">
+  <div class="row">
+    <div class="col-md-12 detail">
+      <h3 translate>ManagedObject</h3>
+      <hr>
+      <hz-resource-property-list
+        resource-type-name="OS::KeyManager::ManagedObject"
+        cls="dl-horizontal"
+        item="ctrl.managed_object"
+        property-groups="[['name', 'description', 'enabled'],
+                          ['size', 'temperature', 'base', 'flavor', 'topping'],
+                          ['id', 'created_at', 'updated_at']]">
+      </hz-resource-property-list>
+    </div>
+  </div>
+</div>

@@ -247,8 +247,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'castellan_uireleasenotes',
-     u'Castellan UI Release Notes Documentation',
+    ('index', 'castellan_uireleasenotes', u'Castellan UI Release Notes Documentation',
      [u'Castellan UI Developers'], 1)
 ]
 
@@ -262,8 +261,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    ('index', 'Castellan-UIReleaseNotes',
-     u'Castellan UI Release Notes Documentation',
+    ('index', 'Castellan-UIReleaseNotes', u'Castellan UI Release Notes Documentation',
      u'Castellan UI Developers', 'Castellan-UIReleaseNotes',
      'One line description of project.',
      'Miscellaneous'),

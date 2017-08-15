@@ -29,58 +29,58 @@ def change_to_id(obj):
 
 
 @urls.register
-class Manage(generic.View):
-    """API for retrieving a single Manage"""
-    url_regex = r'castellan/manages/(?P<id>[^/]+)$'
+class ManagedObject(generic.View):
+    """API for retrieving a single ManagedObject"""
+    url_regex = r'key_manager/managed_objects/(?P<id>[^/]+)$'
 
     @rest_utils.ajax()
     def get(self, request, id):
-        """Get a specific manage"""
-        return change_to_id(client.manage_show(request, id).to_dict())
+        """Get a specific managed_object"""
+        return change_to_id(client.managed_object_show(request, id).to_dict())
 
     @rest_utils.ajax(data_required=True)
     def post(self, request, id):
-        """Update a Manage.
+        """Update a ManagedObject.
 
-        Returns the updated Manage object on success.
+        Returns the updated ManagedObject object on success.
         """
-        manage = client.manage_update(request, id, **request.DATA)
+        managed_object = client.managed_object_update(request, id, **request.DATA)
         return rest_utils.CreatedResponse(
-            '/api/castellan/manage/%s' % manage.uuid,
-            manage.to_dict())
+            '/api/key_manager/managed_object/%s' % managed_object.uuid,
+            managed_object.to_dict())
 
 
 @urls.register
-class Manages(generic.View):
-    """API for Manages"""
-    url_regex = r'castellan/manages/$'
+class ManagedObjects(generic.View):
+    """API for ManagedObjects"""
+    url_regex = r'key_manager/managed_objects/$'
 
     @rest_utils.ajax()
     def get(self, request):
-        """Get a list of the Manages for a project.
+        """Get a list of the ManagedObjects for a project.
 
         The returned result is an object with property 'items' and each
-        item under this is a Manage.
+        item under this is a ManagedObject.
         """
-        result = client.manage_list(request)
+        result = client.managed_object_list(request)
         return {'items': [change_to_id(n.to_dict()) for n in result]}
 
     @rest_utils.ajax(data_required=True)
     def delete(self, request):
-        """Delete one or more Manages by id.
+        """Delete one or more ManagedObjects by id.
 
         Returns HTTP 204 (no content) on successful deletion.
         """
         for id in request.DATA:
-            client.manage_delete(request, id)
+            client.managed_object_delete(request, id)
 
     @rest_utils.ajax(data_required=True)
     def put(self, request):
-        """Create a new Manage.
+        """Create a new ManagedObject.
 
-        Returns the new Manage object on success.
+        Returns the new ManagedObject object on success.
         """
-        manage = client.manage_create(request, **request.DATA)
+        managed_object = client.managed_object_create(request, **request.DATA)
         return rest_utils.CreatedResponse(
-            '/api/castellan/manage/%s' % manage.uuid,
-            manage.to_dict())
+            '/api/key_manager/managed_object/%s' % managed_object.uuid,
+            managed_object.to_dict())

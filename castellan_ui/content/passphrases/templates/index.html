@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Passphrases" %}{% endblock %}
+
+{% block breadcrumb_nav %}
+  <ol class = "breadcrumb">
+    <li>{% trans "Project" %}</li>
+    <li>{% trans "Key Manager" %}</li>
+    <li class="active">{% trans "Passphrases" %}</li>
+  </ol>
+{% endblock %}
+
+{% block page_header %}
+  <hz-page-header header="{% trans "Passphrases" %}"></hz-page-header>
+{% endblock page_header %}
+
+{% block main %}
+  Hello world!
+{% endblock %}
