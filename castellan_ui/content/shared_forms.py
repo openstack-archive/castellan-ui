@@ -80,13 +80,13 @@ class ImportKey(forms.SelfHandlingForm):
         label=_("Choose file"),
         widget=forms.FileInput(
             attrs={'class': 'switched', 'data-switch-on': 'source',
-                   'data-source-file': _('PEM Key File')}),
+                   'data-source-file': _('Key File')}),
         required=False)
     direct_input = forms.CharField(
-        label=_('Key in PEM format'),
+        label=_('Key Value'),
         widget=forms.widgets.Textarea(
             attrs={'class': 'switched', 'data-switch-on': 'source',
-                   'data-source-raw': _('PEM Key')}),
+                   'data-source-raw': _('Key Value')}),
         required=False)
 
     def __init__(self, request, *args, **kwargs):
@@ -119,12 +119,14 @@ class ImportKey(forms.SelfHandlingForm):
                 key_pem = self.files['key_file'].read()
             else:
                 key_pem = data['direct_input']
+        
+            data['key_data'] = self.clean_key_data(key_pem)
+        
         except Exception as e:
             msg = _('There was a problem loading the key: %s. '
                     'Is the key valid and in PEM format?') % e
             raise forms.ValidationError(msg)
 
-        data['key_data'] = self.clean_key_data(key_pem)
 
         return data
 
