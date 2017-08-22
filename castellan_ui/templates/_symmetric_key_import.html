@@ -1,0 +1,9 @@
+{% extends '_object_import.html' %}
+{% load i18n %}
+
+{% block modal-body-right %}
+  <p>{% trans "When importing your key as a file, the raw bytes of the file will be the raw bytes of the key. If you open the key file using a text editor, it will not be human-readable because the bytes may not map to ASCII characters." %}</p>
+  <p>{% trans "To import your key using direct input, use the hex dump of the value of the key. For example, a 128 bit key may look like this:" %}</p>
+  <p><pre>00112233445566778899aabbccddeeff</pre></p>
+{% endblock %}
+
