@@ -32,7 +32,9 @@ Begin by cloning the Horizon and Castellan UI repositories::
 Create a virtual environment and install Horizon dependencies::
 
     cd horizon
-    python tools/install_venv.py
+    virtualenv horizon_dev
+    . horizon_dev/bin/activate
+    pip install -e requirements.txt
 
 Set up your ``local_settings.py`` file::
 
@@ -49,7 +51,7 @@ editor. You will want to customize several settings:
 
 Install Castellan UI with all dependencies in your virtual environment::
 
-    tools/with_venv.sh pip install -e ../castellan-ui/
+    pip install -e ../castellan-ui/
 
 And enable it in Horizon::
 
@@ -58,7 +60,7 @@ And enable it in Horizon::
 
 To run horizon with the newly enabled Castellan UI plugin run::
 
-    ./run_tests.sh --runserver 0.0.0.0:8080
+    python manage.py runserver -- 0.0.0.0:8080
 
 to have the application start on port 8080 and the horizon dashboard will be
 available in your browser at http://localhost:8080/
