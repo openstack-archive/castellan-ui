@@ -56,3 +56,19 @@ nameless_public_key = objects.public_key.PublicKey(
     name=None,
     created=1448088699,
     id=u'11111111-1111-1111-1111-111111111111')
+
+symmetric_key = objects.symmetric_key.SymmetricKey(
+    key=castellan_utils.get_symmetric_key(),
+    algorithm="AES",
+    bit_length=128,
+    name=u'test symmetric key',
+    created=1448088699,
+    id=u'00000000-0000-0000-0000-000000000000')
+
+nameless_symmetric_key = objects.symmetric_key.SymmetricKey(
+    key=castellan_utils.get_symmetric_key(),
+    algorithm="AES",
+    bit_length=128,
+    name=None,
+    created=1448088699,
+    id=u'11111111-1111-1111-1111-111111111111')
