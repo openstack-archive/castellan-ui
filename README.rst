@@ -2,7 +2,7 @@
 Castellan UI
 ===============================
 
-Generic Key Manager interface UI plugin for Horizon
+Generic Key Manager UI Plugin for Horizon
 
 * Free software: Apache license
 * Source: http://git.openstack.org/cgit/openstack/castellan-ui
@@ -53,8 +53,8 @@ Install Castellan UI with all dependencies in your virtual environment::
 
 And enable it in Horizon::
 
-    ln -s ../castellan-ui/castellan_ui/enabled/_90_project_castellan_panelgroup.py openstack_dashboard/local/enabled
-    ln -s ../castellan-ui/castellan_ui/enabled/_91_project_castellan_manages_panel.py openstack_dashboard/local/enabled
+    ln -s ../castellan-ui/castellan_ui/enabled/_90_project_key_manager_panelgroup.py openstack_dashboard/local/enabled
+    ln -s ../castellan-ui/castellan_ui/enabled/_91_project_key_manager_symmetric_keys_panel.py openstack_dashboard/local/enabled
 
 To run horizon with the newly enabled Castellan UI plugin run::
 
