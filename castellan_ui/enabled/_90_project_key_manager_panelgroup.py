@@ -13,24 +13,12 @@
 from django.utils.translation import ugettext_lazy as _
 
 # The slug of the panel group to be added to HORIZON_CONFIG. Required.
-PANEL_GROUP = 'castellan'
+PANEL_GROUP = 'key_manager'
 # The display name of the PANEL_GROUP. Required.
-PANEL_GROUP_NAME = _('Castellan')
+PANEL_GROUP_NAME = _('Key Manager')
 # The slug of the dashboard the PANEL_GROUP associated with. Required.
 PANEL_GROUP_DASHBOARD = 'project'
 
 ADD_INSTALLED_APPS = ['castellan_ui']
-
-ADD_ANGULAR_MODULES = [
-    'horizon.dashboard.castellan'
-]
-
-ADD_JS_FILES = [
-    'horizon/lib/angular/angular-route.js'
-]
-
-ADD_SCSS_FILES = [
-    'dashboard/castellan/castellan.scss'
-]
 
 AUTO_DISCOVER_STATIC_FILES = True

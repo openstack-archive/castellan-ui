@@ -10,12 +10,14 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-# The slug of the panel to be added to HORIZON_CONFIG. Required.
-PANEL = 'manages'
-# The slug of the panel group the PANEL is associated with.
-PANEL_GROUP = 'castellan'
-# The slug of the dashboard the PANEL associated with. Required.
-PANEL_DASHBOARD = 'project'
+from django.utils.translation import ugettext_lazy as _
+import horizon
 
-# Python panel class of the PANEL to be added.
-ADD_PANEL = 'castellan_ui.content.manages.panel.Manages'
+# This panel will be loaded from horizon, because specified in enabled file.
+# To register REST api, import below here.
+from castellan_ui.api import client  # noqa: F401
+
+
+class SymmetricKeys(horizon.Panel):
+    name = _("Symmetric Keys")
+    slug = "symmetric_keys"
