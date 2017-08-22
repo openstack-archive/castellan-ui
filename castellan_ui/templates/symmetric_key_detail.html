@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load i18n parse_date %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block page_header %}
+  {% include "horizon/common/_detail_header.html" %}
+{% endblock %}
+
+{% block main %}
+<div class="detail">
+  <dl class="dl-horizontal">
+    <dt>{% trans "Name" %}</dt>
+    <dd>{{ object.name|default:_("None") }}</dd>
+    <dt>{% trans "Created" %}</dt>
+    <dd>{{ object_created_date|parse_date}}</dd>
+    <dt>{% trans "Algorithm" %}</dt>
+    <dd>{{ object.algorithm|default:_("None") }}</dd>
+    <dt>{% trans "Bit Length" %}</dt>
+    <dd>{{ object.bit_length|default:_("None") }}</dd>
+    <dt>{% trans "Key Value (in hex)" %}</dt>
+    <dd>
+      <div class="key-text word-wrap">{{ object_bytes|default:_("None") }}</div>
+    </dd>
+  </dl>
+</div>
+{% endblock %}
