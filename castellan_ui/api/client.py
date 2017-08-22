@@ -55,18 +55,18 @@ def apiclient(request):
     api_url = ""
 
     try:
-        api_url = base.url_for(request, 'manage')
+        api_url = base.url_for(request, 'managed_object')
     except exceptions.ServiceCatalogException:
-        LOG.debug('No Manage Management service is configured.')
+        LOG.debug('No ManagedObject Management service is configured.')
         return None
 
-    LOG.debug('castellan connection created using the token "%s" and url'
+    LOG.debug('key_managerclient connection created using the token "%s" and url'
               '"%s"' % (request.user.token.id, api_url))
     c = key_manager.API()
     return c
 
 
-def manage_create(request, **kwargs):
+def managed_object_create(request, **kwargs):
     args = {}
     for (key, value) in kwargs.items():
         if key in ATTRIBUTES:
@@ -74,7 +74,7 @@ def manage_create(request, **kwargs):
         else:
             raise exceptions.BadRequest(
                 "Key must be in %s" % ",".join(ATTRIBUTES))
-    # created = apiclient(request).manages.create(**args)
+    # created = apiclient(request).managed_objects.create(**args)
 
     # create dummy response
     args["uuid"] = uuid.uuid1().hex
@@ -87,7 +87,7 @@ def manage_create(request, **kwargs):
     return created
 
 
-def manage_update(request, id, **kwargs):
+def managed_object_update(request, id, **kwargs):
     args = {}
     for (key, value) in kwargs.items():
         if key in ATTRIBUTES:
@@ -95,7 +95,7 @@ def manage_update(request, id, **kwargs):
         else:
             raise exceptions.BadRequest(
                 "Key must be in %s" % ",".join(ATTRIBUTES))
-    # updated = apiclient(request).manage.update(id, **args)
+    # updated = apiclient(request).managed_object.update(id, **args)
 
     # update dummy response
     args["uuid"] = id
@@ -108,24 +108,24 @@ def manage_update(request, id, **kwargs):
     return updated
 
 
-def manage_delete(request, id):
-    # deleted = apiclient(request).manages.delete(id)
+def managed_object_delete(request, id):
+    # deleted = apiclient(request).managed_objects.delete(id)
     deleted = STUB_DATA.pop(id)
 
     return deleted
 
 
-def manage_list(
+def managed_object_list(
         request, limit=None, marker=None, sort_key=None,
         sort_dir=None, detail=True):
 
-    # list = apiclient(request).Manages.list(limit, marker, sort_key,
+    # list = apiclient(request).ManagedObjects.list(limit, marker, sort_key,
     #                                             sort_dir, detail)
     list = [STUB_DATA[data] for data in STUB_DATA]
     return list
 
 
-def manage_show(request, id):
-    # show = apiclient(request).manages.get(id)
+def managed_object_show(request, id):
+    # show = apiclient(request).managed_objects.get(id)
     show = STUB_DATA.get(id)
     return show
