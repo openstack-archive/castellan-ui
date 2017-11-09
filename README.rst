@@ -54,7 +54,7 @@ Install Castellan UI with all dependencies in your virtual environment::
 And enable it in Horizon::
 
     ln -s ../castellan-ui/castellan_ui/enabled/_90_project_key_manager_panelgroup.py openstack_dashboard/local/enabled
-    TODO(kfarr): add the panels here
+    ln -s ../castellan-ui/castellan_ui/enabled/_91_project_key_manager_x509_certificates_panel.py openstack_dashboard/local/enabled
 
 To run horizon with the newly enabled Castellan UI plugin run::
 
