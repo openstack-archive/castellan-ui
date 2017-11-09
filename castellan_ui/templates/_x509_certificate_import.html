@@ -1,0 +1,9 @@
+{% extends '_object_import.html' %}
+{% load i18n %}
+
+{% block modal-body-right %}
+  <p>{% trans "X.509 certificates can be imported if they are in Privacy Enhanced Mail (PEM) format." %}</p>
+  <p>{% trans "Your PEM formatted certificate will look like this:" %}</p>
+  <p><pre>-----BEGIN CERTIFICATE-----<br>&lt;base64-encoded data&gt;<br>-----END CERTIFICATE-----</pre></p>
+{% endblock %}
+
