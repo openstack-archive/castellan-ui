@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "X.509 Certificates" %}{% endblock %}
+
+{% block breadcrumb_nav %}
+  <ol class = "breadcrumb">
+    <li>{% trans "Project" %}</li>
+    <li>{% trans "Key Manager" %}</li>
+    <li class="active">{% trans "X.509 Certificates" %}</li>
+  </ol>
+{% endblock %}
+
+{% block page_header %}
+  <hz-page-header header="{% trans "X.509 Certificates" %}"></hz-page-header>
+{% endblock page_header %}
+
+{% block main %}
+<div class="row">
+  <div class="col-sm-12">
+  {{ x509_certificate_table.render }}
+  </div>
+</div>
+{% endblock %}
