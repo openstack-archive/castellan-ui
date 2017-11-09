@@ -13,10 +13,13 @@
 
 from __future__ import absolute_import
 
+import base64
 import logging
 
 from oslo_context import context
 
+from castellan.common.objects import symmetric_key
+from castellan.common.objects import x_509
 from castellan import key_manager as key_manager_api
 
 from horizon import exceptions
@@ -27,7 +30,8 @@ LOG = logging.getLogger(__name__)
 
 GENERATE_ATTRIBUTES = ['algorithm', 'length', 'name']
 IMPORT_KEY_ATTRIBUTES = ['algorithm', 'bit_length', 'name',
-                         'key', 'object_type']
+                         'key']
+IMPORT_CERT_ATTRIBUTES = ['name', 'data']
 
 
 def key_manager():
@@ -51,13 +55,22 @@ def get_context(request_auth_params):
 
 def import_object(request, **kwargs):
     args = {}
+    try:
+        object_type = kwargs.pop('object_type')
+    except TypeError:
+        raise exceptions.BadRequest("Object type must be included in kwargs")
     for (key, value) in kwargs.items():
-        if key in IMPORT_KEY_ATTRIBUTES:
+        if (object_type == symmetric_key.SymmetricKey and
+                key in IMPORT_KEY_ATTRIBUTES):
             args[str(key)] = value
+        elif object_type == x_509.X509 and key in IMPORT_CERT_ATTRIBUTES:
+            if key == 'data':
+                args[str(key)] = base64.b64decode(value)
+            else:
+                args[str(key)] = value
         else:
             raise exceptions.BadRequest(
                 "Attribute must be in %s" % ",".join(IMPORT_KEY_ATTRIBUTES))
-    object_type = args.pop('object_type')
     key = object_type(**args)
     created_uuid = key_manager().store(get_context(request), key)
 

@@ -76,7 +76,7 @@ class ImportKey(forms.SelfHandlingForm):
         required=False)
     direct_input = forms.CharField(
         label=_('Key Bytes'),
-        help_text=_('The JSON formatted contents of a namespace.'),
+        help_text=_('The bytes of the key (represented as hex characters)'),
         widget=forms.widgets.Textarea(
             attrs={'class': 'switched', 'data-switch-on': 'source',
                    'data-source-raw': _('Key Bytes')}),

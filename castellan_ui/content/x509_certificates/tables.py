@@ -20,28 +20,19 @@ from castellan_ui.api import client
 from horizon import tables
 
 
-class GenerateSymmetricKey(tables.LinkAction):
-    name = "generate_symmetric_key"
-    verbose_name = _("Generate Symmetric Key")
-    url = "horizon:project:symmetric_keys:generate"
-    classes = ("ajax-modal",)
-    icon = "plus"
-    policy_rules = ()
-
-
-class ImportSymmetricKey(tables.LinkAction):
-    name = "import_symmetric_key"
-    verbose_name = _("Import Symmetric Key")
-    url = "horizon:project:symmetric_keys:import"
+class ImportX509Certificate(tables.LinkAction):
+    name = "import_x509_certificate"
+    verbose_name = _("Import Certificate")
+    url = "horizon:project:x509_certificates:import"
     classes = ("ajax-modal",)
     icon = "upload"
     policy_rules = ()
 
 
-class DownloadKey(tables.LinkAction):
+class DownloadX509Certificate(tables.LinkAction):
     name = "download"
-    verbose_name = _("Download Key")
-    url = "horizon:project:symmetric_keys:download"
+    verbose_name = _("Download Certificate")
+    url = "horizon:project:x509_certificates:download"
     classes = ("btn-download",)
     policy_rules = ()
 
@@ -50,24 +41,24 @@ class DownloadKey(tables.LinkAction):
                        kwargs={'object_id': datum.id})
 
 
-class DeleteSymmetricKey(tables.DeleteAction):
+class DeleteX509Certificate(tables.DeleteAction):
     policy_rules = ()
-    help_text = _("You should not delete a symmetric key unless you are "
+    help_text = _("You should not delete a certificate unless you are "
                   "certain it is not being used anywhere.")
 
     @staticmethod
     def action_present(count):
         return ungettext_lazy(
-            u"Delete Symmetric Key",
-            u"Delete Symmetric Keys",
+            u"Delete X.509 Certificate",
+            u"Delete X.509 Certificates",
             count
         )
 
     @staticmethod
     def action_past(count):
         return ungettext_lazy(
-            u"Deleted Symmetric Key",
-            u"Deleted Symmetric Keys",
+            u"Deleted X.509 Certificate",
+            u"Deleted X.509 Certificates",
             count
         )
 
@@ -75,19 +66,16 @@ class DeleteSymmetricKey(tables.DeleteAction):
         client.delete(request, obj_id)
 
 
-class SymmetricKeyTable(tables.DataTable):
-    detail_link = "horizon:project:symmetric_keys:detail"
-    uuid = tables.Column("id", verbose_name=_("Key ID"), link=detail_link)
+class X509CertificateTable(tables.DataTable):
+    detail_link = "horizon:project:x509_certificates:detail"
+    uuid = tables.Column("id", verbose_name=_("ID"), link=detail_link)
     name = tables.Column("name", verbose_name=_("Name"))
-    algorithm = tables.Column("algorithm", verbose_name=_("Algorithm"))
-    bit_length = tables.Column("bit_length", verbose_name=_("Bit Length"))
     created_date = tables.Column("created",
                                  verbose_name=_("Created Date"),
                                  filters=(filters.timestamp_to_iso,))
 
     class Meta(object):
-        name = "symmetric_key"
-        table_actions = (GenerateSymmetricKey,
-                         ImportSymmetricKey,
-                         DeleteSymmetricKey,)
-        row_actions = (DownloadKey, DeleteSymmetricKey)
+        name = "x509_certificate"
+        table_actions = (ImportX509Certificate,
+                         DeleteX509Certificate,)
+        row_actions = (DownloadX509Certificate, DeleteX509Certificate)

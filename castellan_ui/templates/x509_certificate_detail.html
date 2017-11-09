@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load i18n parse_date %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block page_header %}
+  {% include "horizon/common/_detail_header.html" %}
+{% endblock %}
+
+{% block main %}
+<div class="detail">
+  <dl class="dl-horizontal">
+    <dt>{% trans "Name" %}</dt>
+    <dd>{{ object.name|default:_("None") }}</dd>
+    <dt>{% trans "Created" %}</dt>
+    <dd>{{ object_created_date|parse_date}}</dd>
+    <dt>{% trans "Certificate Version" %}</dt>
+    <dd>{{ cert_version}}</dd>
+    <dt>{% trans "SHA-256 Fingerprint" %}</dt>
+    <dd>{{ cert_fingerprint}}</dd>
+    <dt>{% trans "Serial Number" %}</dt>
+    <dd>{{ cert_serial_number}}</dd>
+    <dt>{% trans "Valid From" %}</dt>
+    <dd>{{ cert_validity_start }}</dd>
+    <dt>{% trans "Valid To" %}</dt>
+    <dd>{{ cert_validity_end }}</dd>
+    <dt>{% trans "Issuer" %}</dt>
+    <dd>{{ cert_issuer}}</dd>
+    <dt>{% trans "Subject" %}</dt>
+    <dd>{{ cert_subject}}</dd>
+    <dt>{% trans "Raw Certificate Value" %}</dt>
+    <dd>
+      <div class="key-text word-wrap">{{ object_bytes|default:_("None") }}</div>
+    </dd>
+  </dl>
+</div>
+{% endblock %}
