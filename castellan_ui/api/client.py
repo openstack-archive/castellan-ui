@@ -69,6 +69,8 @@ def import_object(request, **kwargs):
             args[str(key)] = value
         elif object_type == x_509.X509 and key in IMPORT_CERT_ATTRIBUTES:
             if key == 'data':
+                # the data was passed in b64 encoded because some of the bytes
+                # were changed when the raw bytes were passed from the form
                 args[str(key)] = base64.b64decode(value)
             else:
                 args[str(key)] = value
