@@ -1,0 +1,49 @@
+<style>
+.hidden{
+    display:none;
+}
+
+.visible{
+    display:block;
+}
+</style>
+
+<script type="text/javascript">
+function unhide(clickedButton, divID) {
+var item = document.getElementById(divID);
+if (item) {
+    if(item.className=='hidden'){
+        item.className = 'visible' ;
+        clickedButton.textContent = 'hide'
+    }else{
+        item.className = 'hidden';
+        clickedButton.textContent = 'show'
+    }
+}}
+
+</script>
+
+{% extends 'base.html' %}
+{% load i18n parse_date %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block page_header %}
+  {% include "horizon/common/_detail_header.html" %}
+{% endblock %}
+
+{% block main %}
+<div class="detail">
+  <dl class="dl-horizontal">
+    <dt>{% trans "Name" %}</dt>
+    <dd>{{ object.name|default:_("None") }}</dd>
+    <dt>{% trans "Created" %}</dt>
+    <dd>{{ object_created_date|parse_date}}</dd>
+    <dt>{% trans "Passphrase" %}</dt>
+    <dd>
+        <div id="passphrase" class="hidden">{{ object_bytes }}</div>
+        <button class="btn" onclick="unhide(this, 'passphrase') ">show</button>
+    </dd>
+  </dl>
+</div>
+{% endblock %}
