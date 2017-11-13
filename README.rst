@@ -59,6 +59,7 @@ And enable it in Horizon::
     ln -s ../castellan-ui/castellan_ui/enabled/_93_project_key_manager_public_key_panel.py openstack_dashboard/local/enabled
     ln -s ../castellan-ui/castellan_ui/enabled/_94_project_key_manager_symmetric_key_panel.py openstack_dashboard/local/enabled
     ln -s ../castellan-ui/castellan_ui/enabled/_95_project_key_manager_opaque_data_panel.py openstack_dashboard/local/enabled
+    ln -s ../castellan-ui/castellan_ui/enabled/_96_project_key_manager_passphrase_panel.py openstack_dashboard/local/enabled
 
 To run horizon with the newly enabled Castellan UI plugin run::
 
