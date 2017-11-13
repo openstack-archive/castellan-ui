@@ -18,6 +18,7 @@ import logging
 
 from oslo_context import context
 
+from castellan.common.objects import passphrase
 from castellan.common.objects import symmetric_key
 from castellan.common.objects import x_509
 from castellan import key_manager as key_manager_api
@@ -32,6 +33,7 @@ GENERATE_ATTRIBUTES = ['algorithm', 'length', 'name']
 IMPORT_KEY_ATTRIBUTES = ['algorithm', 'bit_length', 'name',
                          'key']
 IMPORT_CERT_ATTRIBUTES = ['name', 'data']
+IMPORT_PASSPHRASE_ATTRIBUTES = ['name', 'passphrase']
 
 
 def key_manager():
@@ -68,6 +70,9 @@ def import_object(request, **kwargs):
                 args[str(key)] = base64.b64decode(value)
             else:
                 args[str(key)] = value
+        elif (object_type == passphrase.Passphrase and
+                key in IMPORT_PASSPHRASE_ATTRIBUTES):
+            args[str(key)] = value
         else:
             raise exceptions.BadRequest(
                 "Attribute must be in %s" % ",".join(IMPORT_KEY_ATTRIBUTES))
