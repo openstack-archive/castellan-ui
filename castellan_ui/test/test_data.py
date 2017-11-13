@@ -84,3 +84,15 @@ nameless_opaque_data = objects.opaque_data.OpaqueData(
     name=None,
     created=1448088699,
     id=u'11111111-1111-1111-1111-111111111111')
+
+passphrase = objects.passphrase.Passphrase(
+    passphrase=u'P@ssw0rd',
+    name=u'test passphrase',
+    created=1448088699,
+    id=u'00000000-0000-0000-0000-000000000000')
+
+nameless_passphrase = objects.passphrase.Passphrase(
+    passphrase=u'P@ssw0rd',
+    name=None,
+    created=1448088699,
+    id=u'11111111-1111-1111-1111-111111111111')
