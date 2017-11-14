@@ -72,3 +72,16 @@ nameless_symmetric_key = objects.symmetric_key.SymmetricKey(
     name=None,
     created=1448088699,
     id=u'11111111-1111-1111-1111-111111111111')
+
+opaque_data = objects.opaque_data.OpaqueData(
+    data=b'test opaque data',
+    name=u'test symmetric key',
+    created=1448088699,
+    id=u'00000000-0000-0000-0000-000000000000')
+
+nameless_opaque_data = objects.opaque_data.OpaqueData(
+    data=b'test opaque data',
+    name=None,
+    created=1448088699,
+    id=u'11111111-1111-1111-1111-111111111111')
+
