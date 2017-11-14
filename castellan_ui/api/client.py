@@ -18,6 +18,7 @@ import logging
 
 from oslo_context import context
 
+from castellan.common.objects import opaque_data
 from castellan.common.objects import passphrase
 from castellan.common.objects import symmetric_key
 from castellan.common.objects import x_509
@@ -34,6 +35,7 @@ IMPORT_KEY_ATTRIBUTES = ['algorithm', 'bit_length', 'name',
                          'key']
 IMPORT_CERT_ATTRIBUTES = ['name', 'data']
 IMPORT_PASSPHRASE_ATTRIBUTES = ['name', 'passphrase']
+IMPORT_DATA_ATTRIBUTES = ['name', 'data']
 
 
 def key_manager():
@@ -56,6 +58,7 @@ def get_context(request_auth_params):
 
 
 def import_object(request, **kwargs):
+    import pdb; pdb.set_trace()
     args = {}
     try:
         object_type = kwargs.pop('object_type')
@@ -72,6 +75,9 @@ def import_object(request, **kwargs):
                 args[str(key)] = value
         elif (object_type == passphrase.Passphrase and
                 key in IMPORT_PASSPHRASE_ATTRIBUTES):
+            args[str(key)] = value
+        elif (object_type == opaque_data.OpaqueData and 
+                key in IMPORT_DATA_ATTRIBUTES):
             args[str(key)] = value
         else:
             raise exceptions.BadRequest(
