@@ -24,3 +24,35 @@ nameless_x509_cert = objects.x_509.X509(
     name=None,
     created=1448088699,
     id=u'11111111-1111-1111-1111-111111111111')
+
+private_key = objects.private_key.PrivateKey(
+    key=castellan_utils.get_private_key_der(),
+    algorithm="RSA",
+    bit_length=2048,
+    name=u'test private key',
+    created=1448088699,
+    id=u'00000000-0000-0000-0000-000000000000')
+
+nameless_private_key = objects.private_key.PrivateKey(
+    key=castellan_utils.get_private_key_der(),
+    algorithm="RSA",
+    bit_length=2048,
+    name=None,
+    created=1448088699,
+    id=u'11111111-1111-1111-1111-111111111111')
+
+public_key = objects.public_key.PublicKey(
+    key=castellan_utils.get_public_key_der(),
+    algorithm="RSA",
+    bit_length=2048,
+    name=u'test public key',
+    created=1448088699,
+    id=u'00000000-0000-0000-0000-000000000000')
+
+nameless_public_key = objects.public_key.PublicKey(
+    key=castellan_utils.get_public_key_der(),
+    algorithm="RSA",
+    bit_length=2048,
+    name=None,
+    created=1448088699,
+    id=u'11111111-1111-1111-1111-111111111111')
