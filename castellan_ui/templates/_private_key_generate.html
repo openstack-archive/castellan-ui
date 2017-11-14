@@ -1,0 +1,9 @@
+{% extends "horizon/common/_modal_form.html" %}
+{% load i18n %}
+
+{% block modal-body-right %}
+  <p>{% trans "Check your key manager to see which algorithms and bit lengths are supported." %}</p>
+  <p>{% trans "A key pair consists of a private key and a public key. When you generate a private key, the public key will also be generated, and vice versa." %}</p>
+  <p>{% trans "You can find the corresponding public key on the " %}<a href="{% url 'horizon:project:public_keys:index' %}">Public Keys</a> {% trans "page." %}</p>
+{% endblock %}
+
