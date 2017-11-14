@@ -10,6 +10,7 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
+import base64
 import mock
 import uuid
 
@@ -42,12 +43,13 @@ class ClientApiTests(base.APITestCase):
         bit_length = 48
         name = None
         key = b'deadbeef'
+        key_b64 = base64.b64encode(key)
         actual_uuid = api.import_object(
             self.request,
             algorithm=algorithm,
             bit_length=bit_length,
             name=name,
-            key=key,
+            key=key_b64,
             object_type=symmetric_key.SymmetricKey)
         self.key_manager.store.assert_called_once()
         args, kwargs = self.key_manager.store.call_args
