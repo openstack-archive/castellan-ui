@@ -1,0 +1,9 @@
+{% extends '_object_import.html' %}
+{% load i18n %}
+
+{% block modal-body-right %}
+  <p>{% trans "Public keys can be imported if they are in Privacy Enhanced Mail (PEM) format." %}</p>
+  <p>{% trans "Your PEM formatted key will look something like this:" %}</p>
+  <p><pre>-----BEGIN PUBLIC KEY-----<br>&lt;base64-encoded data&gt;<br>-----END PUBLIC KEY-----</pre></p>
+{% endblock %}
+
