@@ -1,0 +1,8 @@
+- project:
+    name: openstack/castellan-ui
+    check:
+      jobs:
+        - tox-pep8
+    gate:
+      jobs:
+        - tox-pep8
