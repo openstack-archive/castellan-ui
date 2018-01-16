@@ -1,0 +1,3 @@
+# settings file for castellan-ui plugin
+define_plugin castellan-ui
+enable_service castellan-ui

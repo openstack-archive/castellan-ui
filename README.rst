@@ -19,7 +19,7 @@ Enabling in DevStack
 Add this repo as an external repository into your ``local.conf`` file::
 
     [[local|localrc]]
-    enable_plugin castellan_ui https://github.com/openstack/castellan-ui
+    enable_plugin castellan-ui https://github.com/openstack/castellan-ui
 
 Manual Installation
 -------------------
