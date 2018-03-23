@@ -36,6 +36,8 @@ class CastellanTestsMixin(object):
 
 class APITestCase(CastellanTestsMixin, helpers.APITestCase):
 
+    use_mox = False
+
     def setUp(self):
         super(APITestCase, self).setUp()
         self.mock_uuid1 = str(uuid.uuid4())
