@@ -5,5 +5,4 @@ sphinx>=1.6.2  # BSD
 # Needed for building docs
 django-nose>=1.4.4  # BSD
 mock>=2.0 # BSD
-mox3 # Apache-2.0
 horizon>=13.0.0  # Apache-2.0
