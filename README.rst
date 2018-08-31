@@ -1,12 +1,12 @@
-===============================
+============
 Castellan UI
-===============================
+============
 
 Generic Key Manager UI Plugin for Horizon
 
 * Free software: Apache license
 * Source: http://git.openstack.org/cgit/openstack/castellan-ui
-* Bugs: http://bugs.launchpad.net/castellan-ui
+* Bugs: https://storyboard.openstack.org/#!/project/openstack/castellan-ui
 
 Features
 --------
