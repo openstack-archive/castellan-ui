@@ -1,0 +1,9 @@
+Verified-1: Zuul
+Code-Review+2: Clark Boylan <cboylan@sapwetik.org>
+Verified+2: Clark Boylan <cboylan@sapwetik.org>
+Workflow+1: Clark Boylan <cboylan@sapwetik.org>
+Submitted-by: Clark Boylan <cboylan@sapwetik.org>
+Submitted-at: Thu, 11 Oct 2018 15:54:05 +0000
+Reviewed-on: https://review.openstack.org/599649
+Project: openstack/castellan-ui
+Branch: refs/heads/master
