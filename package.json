@@ -3,7 +3,7 @@
   "description": "Castellan UI JavaScript tests",
   "repository": {
     "type": "git",
-    "url": "git://git.openstack.org/openstack/castellan-ui"
+    "url": "https://git.openstack.org/openstack/castellan-ui"
   },
   "version": "0.0.0",
   "private": true,
