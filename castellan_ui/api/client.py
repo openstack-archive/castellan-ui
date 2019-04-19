@@ -26,7 +26,7 @@ from castellan.common.objects import x_509
 from castellan import key_manager as key_manager_api
 
 from horizon import exceptions
-from horizon.utils.memoized import memoized_with_request
+from horizon.utils.memoized import memoized
 
 
 LOG = logging.getLogger(__name__)
@@ -50,9 +50,9 @@ def get_auth_params_from_request(request):
     )
 
 
-@memoized_with_request(get_auth_params_from_request)
-def get_context(request_auth_params):
-    token_id, tenant_id = request_auth_params
+@memoized
+def get_context(request):
+    token_id, tenant_id = get_auth_params_from_request(request)
 
     return context.RequestContext(auth_token=token_id,
                                   tenant=tenant_id)
