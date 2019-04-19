@@ -13,7 +13,7 @@
 import base64
 import binascii
 from django.core.handlers import wsgi
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from horizon import messages as horizon_messages
 import mock
 
